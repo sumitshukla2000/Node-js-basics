@@ -8,6 +8,12 @@ const shopRoutes = require('./routes/shop');
 
 app.use(bodyParser.urlencoded({extended:false}));
 
+//featrue provided by express to serve files statically
+app.use(express.static(path.join(__dirname , 'public')))
+
+app.set('view engine' , 'pug'); //this will trying to render the engine we sre registering here
+app.set('views' , 'views'); //allows us to tell where to find this dynamic content
+
 // app.use('/add-product' , (req,res,next)=>{
 //     // console.log("Another middleware");
 //     res.send('<form action="product" method="POST"><input type="text" name="title"/> <button type="submit">Add Product</button></form>');
@@ -18,7 +24,7 @@ app.use(bodyParser.urlencoded({extended:false}));
 //     res.redirect('/');
 // });
 
-app.use('/admin' , adminRoutes);
+app.use('/admin' , adminRoutes.router);
 app.use(shopRoutes);
 // app.use('/' , (req,res,next)=>{
 //     res.send('<h1>Hello from Express JS</h1>');
