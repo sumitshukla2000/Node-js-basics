@@ -1,17 +1,23 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
+
 const app = express();
 
+
 const adminRoutes = require('./routes/admin');
-const shopRoutes = require('./routes/shop');
+const shopRoutes = require('./routes/shop');    
 
 app.use(bodyParser.urlencoded({extended:false}));
 
 //featrue provided by express to serve files statically
-app.use(express.static(path.join(__dirname , 'public')))
+app.use(express.static(path.join(__dirname , './' ,  'public')))
 
-app.set('view engine' , 'pug'); //this will trying to render the engine we sre registering here
+
+
+app.set('view engine' , 'ejs');
+// app.search('view engine' , 'hbs');
+// app.set('view engine' , 'pug'); //this will trying to render the engine we sre registering here
 app.set('views' , 'views'); //allows us to tell where to find this dynamic content
 
 // app.use('/add-product' , (req,res,next)=>{
@@ -35,7 +41,10 @@ app.use(shopRoutes);
 app.use((req,res,next)=>{
     // res.status(404).send('<h1 style="display:flex; justify-content:center;align-items:center;height:100vh;font-size:4rem">Page not found</h1>');
 
-    res.sendFile(path.join(__dirname , './' , 'views' , 'page-not-found.html'));
+    // res.sendFile(path.join(__dirname , './' , 'views' , 'page-not-found.html'));
+
+    //we can also send this using render method
+    res.status(404).render('page-not-found' , {pageTitle: "Page Not Found"});
 })
 
 app.listen(3000);

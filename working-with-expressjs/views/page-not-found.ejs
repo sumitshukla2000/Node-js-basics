@@ -1,0 +1,29 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= pageTitle %></title>
+    <link rel="stylesheet" href="/css/main.css"> -->
+
+    <!-- including head part which is common in our all the files -->
+
+    <%- include('./includes/head.ejs') %>
+
+</head>
+<body>
+    <!-- <header class="main-header">
+        <nav class="main-header__nav">
+            <ul class="main-header__item-list">
+                <li class="main-header__item"><a href="/" >Shop</a></li>
+                <li class="main-header__item"><a href="/admin/add-product" class="active">Add Product</a></li>
+            </ul>
+        </nav>
+    </header> -->
+
+    <%- include('./includes/navigation.ejs') %>
+    <h1 class="error" style="display: flex; justify-content: center; align-items: center;; font-size: 4rem;">Page not found</h1>
+<!-- </body>
+</html> -->
+
+<%- include('./includes/end.ejs') %>
