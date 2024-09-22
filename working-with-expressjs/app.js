@@ -4,6 +4,7 @@ const path = require('path');
 
 const app = express();
 
+const errorController = require('./controller/error');
 
 const adminRoutes = require('./routes/admin');
 const shopRoutes = require('./routes/shop');    
@@ -30,7 +31,10 @@ app.set('views' , 'views'); //allows us to tell where to find this dynamic conte
 //     res.redirect('/');
 // });
 
-app.use('/admin' , adminRoutes.router);
+            //below code is used when using multiple imports
+// app.use('/admin' , adminRoutes.router);
+
+app.use('/admin' , adminRoutes);
 app.use(shopRoutes);
 // app.use('/' , (req,res,next)=>{
 //     res.send('<h1>Hello from Express JS</h1>');
@@ -38,13 +42,15 @@ app.use(shopRoutes);
 
         //adding 404 error page
 
-app.use((req,res,next)=>{
-    // res.status(404).send('<h1 style="display:flex; justify-content:center;align-items:center;height:100vh;font-size:4rem">Page not found</h1>');
+// app.use((req,res,next)=>{
+//     // res.status(404).send('<h1 style="display:flex; justify-content:center;align-items:center;height:100vh;font-size:4rem">Page not found</h1>');
 
-    // res.sendFile(path.join(__dirname , './' , 'views' , 'page-not-found.html'));
+//     // res.sendFile(path.join(__dirname , './' , 'views' , 'page-not-found.html'));
 
-    //we can also send this using render method
-    res.status(404).render('page-not-found' , {pageTitle: "Page Not Found"});
-})
+//     //we can also send this using render method
+//     res.status(404).render('page-not-found' , {pageTitle: "Page Not Found"});
+// })
+
+app.use(errorController.get404Page);
 
 app.listen(3000);
