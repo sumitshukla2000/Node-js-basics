@@ -1,1 +1,8 @@
-[{"title":"sss"},{"title":"zafd"},{"title":"bookk4"}]
+[
+    {
+        "title": "Book1",
+        "imageUrl": "https://img.freepik.com/free-photo/book-composition-with-open-book_23-2147690555.jpg",
+        "price": "21",
+        "description": "Its a very interesting book that represent open book like a life of fools "
+    }
+]

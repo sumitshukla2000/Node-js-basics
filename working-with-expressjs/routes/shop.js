@@ -3,7 +3,8 @@ const express = require('express');
 const router = express.Router();
 // const admintRouter = require('./admin');
 
-const productController  =require('../controller/products');
+const shopController  = require('../controller/shop');
+const { route } = require('./admin');
 
 
 // router.get('/' , (req,res,next)=>{
@@ -16,6 +17,16 @@ const productController  =require('../controller/products');
 // });
 
                             //after using controller
-                        router.get('/' , productController.getProduct);
+                        router.get('/' , shopController.getIndex);
+
+                        router.get('/products' , shopController.getProduct);
+
+                        router.get('/products' , shopController.getProduct)
+
+                        router.get('/cart' , shopController.getCart)
+
+                        router.get('/order' , shopController.getOrder)
+
+                        router.get('/checkout' , shopController.getCheckout)
 
 module.exports = router;

@@ -1,7 +1,8 @@
 const express = require('express');
 // const path = require('path');
 const router = express.Router();
-const productController = require('../controller/products');
+
+const adminController = require('../controller/admin');
 
 // var products = [];
 
@@ -17,9 +18,9 @@ const productController = require('../controller/products');
 
                                                     //after using controller
 
-                                                    router.get('/add-product'  , productController.getAddProduct);
-
-
+                                                    router.get('/add-product'  , adminController.getAddProduct);
+                                                    
+                                                    router.get('/products' , adminController.getProduct); 
 // /admin/add-product => POSt request
 // router.post('/product' , (req, res, next)=>{
 
@@ -31,7 +32,9 @@ const productController = require('../controller/products');
 
                                                 //after using controller
 
-                                        router.post('/add-product' , productController.postAddProduct);
+                                        router.post('/add-product' , adminController.postAddProduct);
+
+  
 // exports.router = router;
 // exports.products = products;
 

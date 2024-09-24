@@ -8,11 +8,13 @@
     margin: 1rem 0;
 }
 .form-controller label,
-.form-controller input{
+.form-controller input,
+.form-controller textarea{
     width: 90%;
     display: block;
 }
-.form-controller input{
+.form-controller input,
+.form-controller textarea{
     border: 1px solid #dbc441;
     border-radius: 2px;
     font:inherit;
