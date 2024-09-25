@@ -42,9 +42,9 @@
                     <h2 class="product-price">$<%= product.price %></h2>
                     <p class="product-description"><%= product.description %>
                     </p>
-                </div>
+                </div>  
                 <div class="card-actions">
-                    <button class="btn"><a href="/admin/edit-product">
+                    <button class="btn"><a href="/admin/edit-product/<%= product.id %>?edit=true">
                         Edit
                     </a></button>
 
