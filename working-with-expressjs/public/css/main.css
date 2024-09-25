@@ -7,21 +7,20 @@
     padding: 1rem;
 } */
 .main-header{
-    width: 100%;
+    max-width: 100%;
     background-color: #DBC441;
     padding: 10px;
     height: 56px;
 }
 .main-header__nav{
     height: 100%;
-
 }
 .main-header__item-list{
     width:100%;
-    display: flex;
+    display: none;
     align-items: center;
     list-style: none;
-   height: 100%;
+    height: 100%;
 }
 .main-header__item{
     margin: 10px;
@@ -77,13 +76,16 @@
     font-size: 0.9rem;
 }
 .card-actions{
-    width: 100%;
+    width: 80%;
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     margin: 2rem auto;
 }
-.btn{
+.btn ,
+.card-actions 
+.btn a{
+    text-decoration: none;
     padding: 2px 5px;
     background-color: white;
     color: #138be1;
@@ -93,8 +95,95 @@
     cursor: pointer;
     transition: 0.3s all ease;
 }
-.btn:hover{
+
+.centered{
+    text-align: center;
+}
+.card-actions 
+.btn a{
+    border: none;
+    width: 100%;
+}
+.btn:hover,
+.card-actions 
+.btn a:hover{
     background-color: #138be1;
     color: white;
     box-shadow: 2px 2px 5px #138be1;
+}
+
+.mobile-view{
+    width: 70%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: white;
+    color: black;
+    padding: 4rem 2rem;
+    transform: translateX(-100%);
+    transition: 0.3s all ease;
+    z-index: 10;
+}
+
+.open{
+    transform: translateX(0%);
+}
+
+.backdrop{
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    display: none;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 5;
+    cursor: pointer;
+}
+
+.mobile-header__item-list{
+    list-style: none;
+    font-size: 2.5rem;
+}
+.mobile-header__item{
+    padding: 1.5rem;
+}
+.mobile-header__item a{
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.462);
+    font-family: inherit;
+    font-weight: 700;
+    cursor: pointer;
+    width: 100%;
+}
+
+.mobile-header__item a:hover{
+    color: black;
+    text-shadow: 0 5px 10px rgba(68, 49, 49, 0.289);
+}
+
+.mobile-view__menu{
+    padding: 0.5rem 1rem;
+    margin:10px 0 0 0 ;
+    background-color: rgb(71, 71, 143);
+    border-radius: 4px;
+    border: none;
+    color: white;
+}
+
+.mobile-view__menu:hover{
+    box-shadow: 2px 2px 6px black;
+}
+
+@media screen and (min-width: 768px){
+        .main-header__item-list{
+            display: flex;
+        }
+        .mobile-view{
+            display: none;
+        }
+        .mobile-view__menu{
+            display: none;
+        }
 }

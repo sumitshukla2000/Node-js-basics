@@ -50,12 +50,34 @@ exports.getIndex = (req, res, next) => {
 }
 
 
+//here we use callback function to get back data from model
+exports.getProd = (req, res, next) => {
+    const prodId = req.params.productId;
+    Product.findById(prodId ,product => {
+        console.log(product);
+    res.render('shop/product-detail' , {
+        product:product,
+        pageTitle : product.title,
+        path: '/products'
+    });  
+    })
+}
+
 exports.getCart = (req, res, next) => {
     res.render('shop/cart',
         {
             pageTitle: "My Cart",
             path: '/cart'
         });
+}
+
+exports.postCart = (req,res,next) => {
+    // const prodId = req.params.prodId;
+    // console.log(prodId);
+    // res.redirect('/cart')
+    const prodId = req.body.productId;
+    console.log(prodId)
+    res.redirect('/cart');   
 }
 
 exports.getOrder = (req, res, next) => {

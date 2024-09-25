@@ -23,6 +23,11 @@ const { route } = require('./admin');
 
                         router.get('/products' , shopController.getProduct)
 
+                        router.get('/products/:productId' , shopController.getProd);
+
+                        // router.post('/cart/:prodId' , shopController.postCart)
+                        router.post('/cart' , shopController.postCart)
+
                         router.get('/cart' , shopController.getCart)
 
                         router.get('/order' , shopController.getOrder)

@@ -44,10 +44,14 @@
                     </p>
                 </div>
                 <div class="card-actions">
-                    <form action="/add-to-cart" method="POST"></form>
+                    <button class="btn"><a href="/products/<%= product.id %>">Detail</a></button>
+                    <!-- <form action="/add-to-cart" method="POST">
                     <button class="btn" type="submit">
                         Add To Cart
                     </button>
+                </form> -->
+
+                <%- include('../includes/add-to-cart.ejs' , {product : product}) %>
                 </div>
             </article>
             <% } %>

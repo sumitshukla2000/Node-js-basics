@@ -14,7 +14,7 @@ const getProductFromFile = (cb) => {
 
     fs.readFile(p, (err, fileContent) => {
         if (err) {
-            return cb([])
+             cb([])
         }
         else {
             cb(JSON.parse(fileContent))
@@ -29,6 +29,7 @@ module.exports = class Product {
         this.imageUrl = imageUrl
         this.price = price
         this.description = description
+        // this.id = Math.random().toString();
         // console.log(t)
     }
 
@@ -51,8 +52,9 @@ module.exports = class Product {
         //     })
         // })
 
-                                              //after adding helper function 
-        
+                                //after adding helper function 
+
+            this.id = Math.random().toString();
             getProductFromFile(product => {
                 product.push(this);
                 fs.writeFile(p , JSON.stringify(product) , err=>{
@@ -65,6 +67,13 @@ module.exports = class Product {
     static fetchAll(cb) {
         // return product;
         getProductFromFile(cb);
+    }
+
+    static findById(id , cb){
+        getProductFromFile(products => {
+            const product = products.find(prod => prod.id === id)   
+            cb(product)
+        });
     }
 
 }
