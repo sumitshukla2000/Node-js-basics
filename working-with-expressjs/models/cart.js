@@ -1,3 +1,4 @@
+const { log } = require('console');
 const fs = require('fs');
 const path = require('path');
 
@@ -29,6 +30,40 @@ module.exports = class Cart{
             fs.writeFile(p , JSON.stringify(cart) ,  (err) => {
                 console.log(err)
             });
+
+            
         });
+    }
+    static deleteProduct(id , productPrice){
+        fs.readFile(p , (err , fileContent) => {
+            if(err){
+                return;
+            }
+            const updatedProduct = { ...JSON.parse(fileContent) };
+            const prod = updatedProduct.product.find(prod => prod.id === id);
+            if(!prod){
+                return;
+            }
+    const productQty = prod.qty;
+    updatedProduct.product = updatedProduct.product.filter((prod) => prod.id !== id);
+            updatedProduct.totalPrice = updatedProduct.totalPrice - productPrice * productQty;
+
+            fs.writeFile(p , JSON.stringify(updatedProduct) , err => {
+                console.log(err);
+                
+            })
+        })
+    }
+
+    static getProduct(cb){
+        fs.readFile(p , (err , fileContent) => {
+            let cart = JSON.parse(fileContent)
+            if(err){
+                cb(null)
+            }
+            else{
+                cb(cart)
+            }
+        })
     }
 }

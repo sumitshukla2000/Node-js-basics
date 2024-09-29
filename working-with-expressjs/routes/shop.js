@@ -28,6 +28,8 @@ const { route } = require('./admin');
                         // router.post('/cart/:prodId' , shopController.postCart)
                         router.post('/cart' , shopController.postCart)
 
+                        router.post('/cart-delete-item' , shopController.postCartDeleteProduct);
+
                         router.get('/cart' , shopController.getCart)
 
                         router.get('/order' , shopController.getOrder)

@@ -8,12 +8,12 @@
     </title>
     <link rel="stylesheet" href="/css/main.css"> -->
 
-    <%- include('../includes/head.ejs')%>
-</head>
+<%- include('../includes/head.ejs')%>
+    </head>
 
-<body>
+    <body>
 
-    <!-- <header class="main-header">
+        <!-- <header class="main-header">
         <nav class="main-header__nav">
             <ul class="main-header__item-list">
                 <li class="main-header__item"><a href="/" class="active">Shop</a></li>
@@ -22,45 +22,49 @@
         </nav>
     </header> -->
 
-    <%- include('../includes/navigation.ejs')%>
+        <%- include('../includes/navigation.ejs')%>
 
-    <main>
-        <% if(prods.length > 0 ) {%>
-        <div class="grid">
-            <% for (let product of prods ) { %>
-            <article class=" card product-item">
-                <header class="card-header">
-                    <h1 class="product-title "> <%= product.title%> </h1>
-                </header>
-                <div class="card-image">
-                <!-- <img src="https://img.freepik.com/free-photo/book-composition-with-open-book_23-2147690555.jpg"
+            <main>
+                <% if(prods.length> 0 ) {%>
+                    <div class="grid">
+                        <% for (let product of prods ) { %>
+                            <article class=" card product-item">
+                                <header class="card-header">
+                                    <h1 class="product-title ">
+                                        <%= product.title%>
+                                    </h1>
+                                </header>
+                                <div class="card-image">
+                                    <!-- <img src="https://img.freepik.com/free-photo/book-composition-with-open-book_23-2147690555.jpg"
                     alt="book image"> -->
-                    <img src="<%= product.imageUrl %>"
-                    alt="<%= product.imageUrl %>">
-                </div>
-                <div class="card-content">
-                    <h2 class="product-price">$<%= product.price %></h2>
-                    <p class="product-description"><%= product.description %>
-                    </p>
-                </div>  
-                <div class="card-actions">
-                    <button class="btn"><a href="/admin/edit-product/<%= product.id %>?edit=true">
-                        Edit
-                    </a></button>
+                                    <img src="<%= product.imageUrl %>" alt="<%= product.imageUrl %>">
+                                </div>
+                                <div class="card-content">
+                                    <h2 class="product-price">$<%= product.price %>
+                                    </h2>
+                                    <p class="product-description">
+                                        <%= product.description %>
+                                    </p>
+                                </div>
+                                <div class="card-actions">
+                                    <button class="btn"><a href="/admin/edit-product/<%= product.id %>?edit=true">
+                                            Edit
+                                        </a></button>
 
-                    <form action="/admin/delete-product" method="POSt">
-                        <button type="submit" class="btn">Delete</button>
-                    </form>
-                </div>
-            </article>
-            <% } %>
-        </div>
-        <% } else { %>
-        
-            <h1>No Product</h1>
-        <% } %>
-    </main>
-<!-- </body>
+                                    <form action="/admin/delete-product" method="POSt">
+                                        <button type="submit" class="btn">Delete</button>
+                                        <input type="hidden" name="prodId" value="<%= product.id %>">
+                                    </form>
+                                </div>
+                            </article>
+                            <% } %>
+                    </div>
+                    <% } else { %>
+
+                        <h1>No Product</h1>
+                        <% } %>
+            </main>
+            <!-- </body>
 </html> -->
 
-<%- include('../includes/end.ejs')%>
+            <%- include('../includes/end.ejs')%>
