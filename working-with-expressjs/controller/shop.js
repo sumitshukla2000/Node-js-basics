@@ -28,39 +28,74 @@ exports.getProduct = (req, res, next) => {
 
     //after file system
 
-    Product.fetchAll((product) => {
+    // Product.fetchAll((product) => {
+    //     res.render('shop/product-list',
+    //         {
+    //             prods: product,
+    //             pageTitle: 'Products',
+    //             path: "/product-list"
+    //         })
+    // })
+
+    Product.fetchAll()
+    .then(([rows , fieldData]) => {
         res.render('shop/product-list',
-            {
-                prods: product,
-                pageTitle: 'Products',
-                path: "/product-list"
-            })
+                    {
+                        prods: rows,
+                        pageTitle: 'Products',
+                        path: "/product-list"
+                    })
     })
+    .catch(err => console.log(err))
 };
 
 exports.getIndex = (req, res, next) => {
-    Product.fetchAll((product) => {
+    // Product.fetchAll((product) => {
+    //     res.render('shop/index',
+    //         {
+    //             prods: product,
+    //             pageTitle: 'My Shop',
+    //             path: "/"
+    //         })
+    // })
+
+                    // after database
+    Product.fetchAll()
+    .then(([rows , fieldData]) => {
         res.render('shop/index',
-            {
-                prods: product,
-                pageTitle: 'My Shop',
-                path: "/"
-            })
+                    {
+                        prods: rows,
+                        pageTitle: 'My Shop',
+                        path: "/"
+                    })
     })
+    .catch(err => console.log(err))
 }
 
 
 //here we use callback function to get back data from model
 exports.getProd = (req, res, next) => {
     const prodId = req.params.productId;
-    Product.findById(prodId, product => {
-        console.log(product);
+    // Product.findById(prodId, product => {
+    //     console.log(product);
+    //     res.render('shop/product-detail', {
+    //         product: product,
+    //         pageTitle: product.title,
+    //         path: '/products'
+    //     });
+    // })
+
+                // after database
+    Product.findById(prodId)
+    .then(([product]) => {
         res.render('shop/product-detail', {
-            product: product,
-            pageTitle: product.title,
-            path: '/products'
-        });
+                    product: product[0],
+                    pageTitle: product.title,
+                    path: '/products'
+                });
     })
+    .catch(err => cons0ole.log(err))
+    
 }
 
 exports.getCart = (req, res, next) => {

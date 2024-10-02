@@ -5,9 +5,21 @@ const path = require('path');
 const app = express();
 
 const errorController = require('./controller/error');
+const db = require('./utils/database');
+
+//executing queries
+// db.execute('SELECT * FROM product')
+// .then([rows , fieldData] => {
+//         console.log(rows)
+//         console.log(fieldData)
+// })
+// .catch(err => {
+//         console.log(err)
+// })
 
 const adminRoutes = require('./routes/admin');
 const shopRoutes = require('./routes/shop');    
+const { log } = require('console');
 
 app.use(bodyParser.urlencoded({extended:false}));
 
